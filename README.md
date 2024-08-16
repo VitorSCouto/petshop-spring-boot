@@ -1,4 +1,4 @@
-# API de um sistema de controle de atendimento e informacoes de Pets! Projeto para Metaway de BG
+# API de um sistema de controle de atendimento e informacoes de Pets!
 
 Demostração da implementação de segurança role-based usando Spring Boot e JSON Web Tokens (JWT).
 
