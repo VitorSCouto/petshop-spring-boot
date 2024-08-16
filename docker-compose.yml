@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: unless-stopped
+    volumes:
+      - mysql-data:/var/lib/mysql
+    env_file:
+      - .env
+    healthcheck:
+      test: "mysqladmin ping -hlocalhost -uroot -p$MYSQL_ROOT_PASSWORD"
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      mysql:
+        condition: service_healthy
+    links:
+      - mysql
+    ports:
+      - 8082:8080
+
+volumes:
+  mysql-data:
